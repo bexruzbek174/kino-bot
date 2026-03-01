@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS movies (
 conn.commit()
 
 
+# 1️⃣ Kanalga yangi video tashlansa
 @bot.channel_post_handler(content_types=['video', 'document'])
 def save_movie(message):
     cursor.execute("SELECT COUNT(*) FROM movies")
@@ -36,6 +37,7 @@ def save_movie(message):
     )
 
 
+# 2️⃣ User kod yuborsa
 @bot.message_handler(func=lambda message: True)
 def send_movie(message):
     code = message.text
